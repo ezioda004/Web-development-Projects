@@ -1,5 +1,6 @@
 import React from 'react';
 import marked from 'marked';
+import './Preview.css';
 
 class Preview extends React.Component{
     createMarkup() {
@@ -7,7 +8,7 @@ class Preview extends React.Component{
       }
     render(){
         return (
-            <div dangerouslySetInnerHTML={this.createMarkup()}>
+            <div id = "preview" dangerouslySetInnerHTML={this.createMarkup()}>
             </div>
         )
     }

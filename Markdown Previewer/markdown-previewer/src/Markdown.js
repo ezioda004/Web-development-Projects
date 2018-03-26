@@ -1,9 +1,10 @@
 import React from 'react';
+import './Markdown.css'
 
 class Markdown extends React.Component {
     render(){
         return (
-            <textarea onChange = {this.props.triggerHandleChange}>
+            <textarea id = "editor" onChange = {this.props.triggerHandleChange}>
                 {this.props.initialValue}
             </textarea>
         );
