@@ -1,9 +1,37 @@
 body {
-  padding: 2%;
+  height: 100vh;
 }
-
-.main {
+#container {
+  height: 100%;
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
 }
+header {
+  margin-top: 3%;
+  flex: 0 1 100%;
+  align-self: flex-start;
+  letter-spacing: 8px;
+}
+.main {
+  align-self: center;
+  align-content: center;
+  width: 100%;
+  /* height: 100%; */
+  display: flex;
+  flex: 0 1 100%;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  min-height: 50%;
+  max-height: 70%;
+}
+footer {
+  flex: 0 1 100%;
+  align-self: flex-end;
+  background: #f2f2f2;
+  text-align: center;
+  height: 5%;
+}
+/* #author {
+  margin-top: auto;
+} */
 /*# sourceMappingURL=App.css.map */

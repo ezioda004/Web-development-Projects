@@ -1,4 +1,6 @@
 #preview {
-  flex: 1 1 50%;
+  background: #fff;
+  flex: 1 1 45%;
+  overflow: auto;
 }
 /*# sourceMappingURL=Preview.css.map */

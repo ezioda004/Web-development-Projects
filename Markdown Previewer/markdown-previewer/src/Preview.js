@@ -1,6 +1,12 @@
 import React from 'react';
 import marked from 'marked';
 import './Preview.css';
+import './Markdown.css';
+
+
+const renderer = new marked.Renderer();
+renderer.link = ( href, title, text ) => `<a target="_blank" href="${ href }" title="${ title }">${ text }</a>`;
+
 
 class Preview extends React.Component{
     createMarkup() {
@@ -8,8 +14,21 @@ class Preview extends React.Component{
       }
     render(){
         return (
-            <div id = "preview" dangerouslySetInnerHTML={this.createMarkup()}>
+            <div className = "terminal">
+                <div className = "nav">
+                    <div className = "icons">
+                        <span className = "mac mac-red"> </span>
+                        <span className = "mac mac-orange"> </span>
+                        <span className = "mac mac-green"> </span>
+                    </div>
+                    <div className = "title">
+                        <span><i className="fas fa-eye"></i> Preview</span>
+                    </div>
+                </div>
+                <div id = "preview" dangerouslySetInnerHTML={this.createMarkup()}>
+                </div>
             </div>
+            
         )
     }
 }

@@ -1,4 +1,60 @@
-#editor {
-  flex: 1 1 50%;
+.terminal {
+  flex: 0 1 47%;
+  -webkit-box-shadow: 0px 19px 117px -22px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 19px 117px -22px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 19px 117px -22px rgba(0, 0, 0, 0.75);
+  font-family: 'Ubuntu Mono', monospace;
+  display: flex;
+  flex-flow: column nowrap;
+  overflow: auto;
+}
+
+.terminal .nav {
+  background: #ddd;
+  display: flex;
+  flex-flow: row nowrap;
+  border: 1px solid silver;
+  border-radius: 10px 10px 0 0;
+}
+
+.terminal .nav .title {
+  flex: 1 1 60%;
+}
+
+.terminal .nav .icons {
+  padding: 0 1%;
+  flex: 1 1 40%;
+  align-items: center;
+}
+
+.terminal .nav .icons .mac {
+  margin: 5px 3px;
+  display: inline-block;
+  height: 60%;
+  width: 15px;
+  border-radius: 50%;
+  align-self: center;
+}
+
+.terminal .nav .icons .mac-red {
+  background: #fc605b;
+}
+
+.terminal .nav .icons .mac-orange {
+  background: #fdbc40;
+}
+
+.terminal .nav .icons .mac-green {
+  background: #33c748;
+}
+
+.terminal #editor {
+  color: white;
+  background: #333;
+  flex: 1 1 90%;
+}
+
+.terminal #editor:focus {
+  outline: none !important;
 }
 /*# sourceMappingURL=Markdown.css.map */
