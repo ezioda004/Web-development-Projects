@@ -52,9 +52,21 @@
   color: white;
   background: #333;
   flex: 1 1 90%;
+  height: 100%;
+  width: 100%;
 }
 
 .terminal #editor:focus {
   outline: none !important;
+}
+
+@media (max-width: 576px) {
+  body {
+    padding: 3%;
+  }
+  body .terminal {
+    height: 100%;
+    flex: 0 1 45%;
+  }
 }
 /*# sourceMappingURL=Markdown.css.map */

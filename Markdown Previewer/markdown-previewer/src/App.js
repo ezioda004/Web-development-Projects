@@ -10,19 +10,22 @@ class App extends Component {
     super(props);
 
     this.state = {
-      input: ` # Hello World (H1)
-      \n ## This is my Markdown Previewer (H2) 
-      \n ### This markdown uses github style. (H3)
-      \n Paragraphs are sperated by lines 
-      \n #### Unordered list: \n * use asterisks \n - or minuses \n + or pluses \n
-      \n #### Numbered list: \n 1. apples \n 2. oranges \n 3. pears \n
-      \n Text attributes _italic_, *italic*, __bold__, **bold**, \`monospace\`, ~~strikethrough~~.
+      input: ` # Hello World;
+      \n ## This is my Markdown Previewer.
+      \n ### This markdown uses github style.
+      \n Paragraphs are seperated by lines. 
+      \n #### Unordered list: \n * Use asterisks \n - Or minuses \n + Or pluses \n
+      \n #### Numbered list: \n 1. WoW \n 2. OW \n 3. HS \n
+      \n Text attributes _italic_, *italic*, __bold__, **bold**, \`monospace\`, ~~strikethrough~~, ***itaclic and bold***
       \n \`<This is inline code>\`
       \n \`\`\` 
       function multiLineCode(){
         return "This works!";
       }
-      \n \`\`\`  `
+      multiLineCode();
+      \n \`\`\`  
+      \n ![React](http://jpizz.com/assets/img/react.png)
+      \n Made by [ezioda004](https://github.com/ezioda004)`
     }
     this.onHandleChange = this.onHandleChange.bind(this);
   }
@@ -48,7 +51,7 @@ class App extends Component {
 
         <footer>
           <div id = "author">
-            Made by ezioda004
+            Made by <a href = "https://github.com/ezioda004" target = "_blank">ezioda004</a>
           </div>
         </footer>
       </div>

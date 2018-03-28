@@ -19,7 +19,7 @@ header {
   /* height: 100%; */
   display: flex;
   flex: 0 1 100%;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   justify-content: space-around;
   min-height: 50%;
   max-height: 70%;
@@ -27,7 +27,7 @@ header {
 footer {
   flex: 0 1 100%;
   align-self: flex-end;
-  background: #f2f2f2;
+  background: #ddd;
   text-align: center;
   height: 5%;
 }
@@ -35,3 +35,21 @@ footer {
   margin-top: auto;
 } */
 /*# sourceMappingURL=App.css.map */
+
+
+@media (max-width: 768px){
+  header h1 {
+    font-size: 2em;
+  }
+}
+
+@media (max-width: 576px){
+  header h1 {
+    font-size: 1.5em;
+  }
+  .main {
+    max-height: 100%;
+    flex-flow: column wrap;
+    align-self: auto;
+  }
+}
