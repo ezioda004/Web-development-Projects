@@ -24,6 +24,7 @@ class App extends Component {
       }
       multiLineCode();
       \n \`\`\`  
+      \n links open in [new page](www.google.com)
       \n ![React](http://jpizz.com/assets/img/react.png)
       \n Made by [ezioda004](https://github.com/ezioda004)`
     }
@@ -45,7 +46,7 @@ class App extends Component {
           <Markdown 
             triggerHandleChange = {this.onHandleChange}
             initialValue = {this.state.input} />
-          {console.log(this.state.input)}
+            
           <Preview toPreview = {this.state.input} />
         </div>
 

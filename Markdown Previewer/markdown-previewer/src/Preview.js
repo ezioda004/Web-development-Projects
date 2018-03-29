@@ -3,14 +3,16 @@ import marked from 'marked';
 import './Preview.css';
 import './Markdown.css';
 
-
 const renderer = new marked.Renderer();
 renderer.link = ( href, title, text ) => `<a target="_blank" href="${ href }" title="${ title }">${ text }</a>`;
 
 
+
+//Preview Child Component that...previews 
+
 class Preview extends React.Component{
     createMarkup() {
-        return {__html: marked(this.props.toPreview)};
+        return {__html: marked(this.props.toPreview, {renderer})};
       }
     render(){
         return (
@@ -32,6 +34,7 @@ class Preview extends React.Component{
         )
     }
 }
+
 
 export default Preview;
 

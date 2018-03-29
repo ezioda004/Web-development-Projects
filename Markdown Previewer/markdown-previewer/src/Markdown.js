@@ -17,8 +17,10 @@ class Markdown extends React.Component {
                     </div>
                     
                 </div>
-                <textarea id = "editor" onChange = {this.props.triggerHandleChange}>
-                    {this.props.initialValue}
+                <textarea id = "editor" 
+                    onChange = {this.props.triggerHandleChange}
+                    defaultValue = {this.props.initialValue}>
+                
                 </textarea>
             </div>
             
