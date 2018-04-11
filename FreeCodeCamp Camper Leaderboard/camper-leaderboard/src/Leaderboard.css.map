@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AACI,YADQ,CACR,MAAM,CAAC;EACH,OAAO,EAAE,IAAI;CAShB;;AAXL,AAIQ,YAJI,CACR,MAAM,CAGF,GAAG,CAAC;EACA,IAAI,EAAE,OAAO;CAChB;;AANT,AAOQ,YAPI,CACR,MAAM,CAMF,GAAG,AAAA,YAAa,CAAA,AAAA,CAAC,EAAC;EAEd,IAAI,EAAE,MAAM;CACf",
+    "sources": [
+        "Leaderboard.scss"
+    ],
+    "names": [],
+    "file": "Leaderboard.css"
+}
