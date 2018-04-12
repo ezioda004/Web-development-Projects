@@ -1,0 +1,16 @@
+header h2 {
+  padding-left: 10%;
+  line-height: 40px;
+  background: #006400;
+  color: white;
+}
+
+header h2 a {
+  color: inherit;
+}
+
+header h2 a:link, header h2 a:hover {
+  color: white;
+  text-decoration: none;
+}
+/*# sourceMappingURL=Header.css.map */

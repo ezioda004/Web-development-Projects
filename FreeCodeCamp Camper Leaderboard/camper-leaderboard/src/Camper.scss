@@ -1,11 +1,31 @@
 .camper {
     display: flex;
-
-    .rank, .username, .browniesRecent, .browniesAllTime {
+    padding: 5px;
+    border: 1px solid #351f0b;
+    .browniesRecent, .browniesAllTime {
+        flex: 1 1 20%;
+    }
+    .rank {
+        flex: 0 1 10%;   
+    }
+    .username {
         flex: 0 1 20%;
+        display: flex;
+        align-self: center;
+        font-weight: 600;
+        .avatar {
+            width: 20%;
+            height: 20%;
+            border: 1px solid #351f0b;
+        }
+        div {
+            padding-left: 10px;
+        }
     }
-    .avatar {
-        width: 5%;
-        height: 5%;
-    }
+}
+.camper:nth-of-type(odd){
+    background: #f0f0f0;
+}
+.camper:nth-of-type(even){
+    background: white;
 }

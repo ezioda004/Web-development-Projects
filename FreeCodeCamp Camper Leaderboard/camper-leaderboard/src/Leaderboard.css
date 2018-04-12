@@ -1,12 +1,68 @@
-#Leaderboard #title {
+body {
+  background: #333;
+  font-family: 'Lato', sans-serif;
+}
+
+#Leaderboard {
+  margin-top: 5%;
+  width: 80%;
+  margin: 3% auto;
+}
+
+#Leaderboard #Leaderboard-header {
+  border-bottom: 3px solid #351f0b;
+  border: 2px solid #351f0b;
+  background: #006400;
+  color: white;
   display: flex;
 }
 
-#Leaderboard #title div {
-  flex: 0 1 20%;
+#Leaderboard #Leaderboard-header h3 {
+  text-align: right;
+  flex: 0 1 55%;
 }
 
-#Leaderboard #title div:nth-of-type(3) {
-  flex: 0 1 5%;
+#Leaderboard #Leaderboard-header div {
+  display: flex;
+  justify-content: flex-end;
+  flex: 0 1 30%;
+  text-align: right;
+}
+
+#Leaderboard #Leaderboard-header div button {
+  align-self: center;
+  transition: all 0.5s;
+  border-radius: 0;
+  background: white;
+  height: 100%;
+}
+
+#Leaderboard #Leaderboard-header div button:hover {
+  background: silver;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#Leaderboard #title {
+  border: 2px solid #351f0b;
+  border-top: 0;
+  padding: 10px;
+  background: #006400;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+#Leaderboard #title div {
+  flex: 1 1 20%;
+}
+
+#Leaderboard #title div:nth-of-type(1) {
+  flex: 0 1 10%;
+}
+
+#Leaderboard #title div:nth-of-type(2) {
+  flex: 0 1 20%;
+  text-align: left;
 }
 /*# sourceMappingURL=Leaderboard.css.map */
