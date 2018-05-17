@@ -3,7 +3,14 @@ import './Header.css';
 
 class Header extends Component{
     render(){
-        return (<div> This is Header </div>);
+        return (
+            <div id = "header">
+                <nav>
+                    <i class="fas fa-utensils"></i>
+                    <span> Recipe Box</span>
+                </nav>
+            </div>
+        );
     }
 }
 

@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css?family=Lobster");
+#header {
+  font-family: 'Lobster', cursive;
+  background: #93C461;
+  flex: 1 1 100%;
+  font-size: 35px;
+  color: white;
+  padding: 7px;
+}
+
+#header nav {
+  margin-left: 50px;
+}
+/*# sourceMappingURL=Header.css.map */
