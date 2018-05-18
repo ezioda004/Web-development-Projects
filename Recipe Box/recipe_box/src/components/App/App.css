@@ -1,5 +1,9 @@
+html, body, #root, .App {
+  height: 100%;
+}
+
 .App {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column nowrap;
 }
 /*# sourceMappingURL=App.css.map */

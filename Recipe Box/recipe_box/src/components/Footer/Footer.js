@@ -3,7 +3,13 @@ import './Footer.css';
 
 class Footer extends Component{
     render(){
-        return (<div> This is Footer </div>);
+        return (
+            <footer id  = "footer"> 
+                <span>
+                    Made by ezioda004
+                </span>
+            </footer>
+        );
     }
 }
 

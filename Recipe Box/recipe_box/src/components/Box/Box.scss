@@ -1,0 +1,29 @@
+#box {
+    flex: 1 1 100%;
+    .desc {
+        background: url("https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=500&w=1000");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        height: 200px;
+        color: white;
+        h2 {
+            margin: 0;
+            z-index: 10;
+            position: relative;
+            text-align: center;
+            top: 50px;
+        }
+    }
+    .desc:before {
+        content: '';
+        position: absolute;
+        background-image: linear-gradient(to bottom right,#413C35,#413C35);
+        top: 53px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: .6;
+        max-height: 200px;
+    }
+}

@@ -3,7 +3,13 @@ import './Box.css';
 
 class Box extends Component{
     render(){
-        return (<div> This is Box </div>);
+        return (
+            <main id = "box"> 
+                <div className = "desc">
+                   <h2>this is some heading</h2>
+                </div>
+            </main>
+        );
     }
 }
 

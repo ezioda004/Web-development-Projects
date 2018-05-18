@@ -6,7 +6,7 @@ class Header extends Component{
         return (
             <div id = "header">
                 <nav>
-                    <i class="fas fa-utensils"></i>
+                    <i className="fas fa-utensils"></i>
                     <span> Recipe Box</span>
                 </nav>
             </div>
