@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import  Recipe from '../Recipe/Recipe'; 
 import './Box.css';
 
-
+//Template recipes
 const localRecipes = {
     recipes: 
     [   
@@ -46,8 +46,12 @@ const localRecipes = {
     ]
 }
 
+//localstorage/cookie stuff
+
 localStorage.setItem("recipe", JSON.stringify(localRecipes));
 console.log(localStorage);
+
+//Box component, a SMART one
 class Box extends Component{
     constructor(props){
         super(props);
@@ -69,6 +73,7 @@ class Box extends Component{
         })
         // console.log(this.state);
     }
+
     render(){
         return (
             <main id = "box"> 
@@ -79,6 +84,7 @@ class Box extends Component{
                     recipe = {this.state}
                     deleteRecipe = {(event) => this.recipeDeleteHandler(event)}
                     updateRecipe = {(event) => this.updateRecipeHandler(event)}
+                    // addItem = {(event) => this.addItem(event)}
                 />
             </main>
         );

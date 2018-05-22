@@ -1,0 +1,32 @@
+.modal {
+    .modal-edit-item {
+        display: none;
+    
+        z-index: 10000;
+    
+        position: absolute;
+        background-image: linear-gradient(to bottom right,#413C35,#413C35);
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: .8;
+        height: 100vh;
+        width: 100vw;
+        .edit-item {
+            text-align: center;
+            margin: 15% auto;
+            h1 {
+                color: white;
+            }
+        }
+     
+    }
+    .modal-edit-item-show {
+        display:block;
+        // z-index: 10000000;
+        
+       
+    }
+    
+}

@@ -1,0 +1,27 @@
+.modal .modal-edit-item {
+  display: none;
+  z-index: 10000;
+  position: absolute;
+  background-image: linear-gradient(to bottom right, #413C35, #413C35);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: .8;
+  height: 100vh;
+  width: 100vw;
+}
+
+.modal .modal-edit-item .edit-item {
+  text-align: center;
+  margin: 15% auto;
+}
+
+.modal .modal-edit-item .edit-item h1 {
+  color: white;
+}
+
+.modal .modal-edit-item-show {
+  display: block;
+}
+/*# sourceMappingURL=Modal.css.map */
