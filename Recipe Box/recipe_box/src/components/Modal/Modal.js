@@ -56,7 +56,12 @@ class Modal extends Component {
         document.querySelector(".modal-edit-item").classList.toggle("modal-edit-item-show");
     }
     deleteItem(e){
-
+        const sectionName = e.target.parentNode.parentNode.parentNode.children[0].textContent.toLowerCase();
+        const index = e.target.getAttribute("data-key"); 
+        // console.log("clicked", sectionName, index);
+        this.props.deleteItem({
+            [sectionName]: index
+        });
     }
     render(){
         console.log(this.props.editRecipe);
@@ -65,14 +70,14 @@ class Modal extends Component {
             <div className = "ingredient" key = {i}>
                 {ingredient}
                 <i className="fas fa-pencil-alt" onClick = {(e) => this.editItem(e)} data-key = {i}></i>
-                <i className="far fa-trash-alt"></i>
+                <i className="far fa-trash-alt" onClick = {(e) => this.deleteItem(e)} data-key = {i}></i>
             </div>
         ));
         const instructions = this.props.editRecipe.editRecipe.recipe_instructions.map((instruction, i) => (
             <div className = "instruction" key = {i}>
                 {instruction}
                 <i className="fas fa-pencil-alt" onClick = {(e) => this.editItem(e)} data-key = {i}></i>
-                <i className="far fa-trash-alt"></i>
+                <i className="far fa-trash-alt" onClick = {(e) => this.deleteItem(e)} data-key = {i}></i>
             </div>
         ));
         return (

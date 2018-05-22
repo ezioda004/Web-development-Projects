@@ -96,10 +96,18 @@ class Recipe extends Component {
         this.setState(prevState => {
             const newState = JSON.parse(JSON.stringify(prevState));
             const keys = Object.keys(e);
-            console.log(newState.editRecipe[`recipe_${keys[0]}`][e[keys[0]]])
             newState.editRecipe[`recipe_${keys[0]}`][e[keys[0]]] = e.value;
             return newState;
             
+        });
+    }
+    //delete a single item from ins/ing (callback from Modal.js => deleteItem)
+    deleteItem(e){
+        this.setState(prevState => {
+            const newState = JSON.parse(JSON.stringify(prevState));
+            const keys = Object.keys(e);
+            newState.editRecipe[`recipe_${keys[0]}`].splice(e[keys[0]], 1);
+            return newState;
         });
     }
     render(){
@@ -160,6 +168,7 @@ class Recipe extends Component {
                     editRecipeHandler = {(e) => this.editRecipeHandler(e)}
                     addItem = {(e) => this.addItem(e)}
                     saveItem = {(e) => this.saveItem(e)}
+                    deleteItem = {(e) => this.deleteItem(e)}
                 />
             </section>
         );
