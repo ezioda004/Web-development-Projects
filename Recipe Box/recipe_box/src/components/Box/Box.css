@@ -30,4 +30,10 @@
   opacity: .6;
   max-height: 200px;
 }
+
+#box .new-recipe {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
 /*# sourceMappingURL=Box.css.map */

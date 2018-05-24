@@ -25,22 +25,32 @@ class Recipe extends Component {
                 recipe_drink: "some drink"
             },
             isEditClicked: true,
-            currentIndex: null
+            currentIndex: null,
+            newRecipe: this.props.recipe.newRecipe
         };
         this.editRecipeHandler = this.editRecipeHandler.bind(this);
     }
+    componentWillReceiveProps(nextProps){
+        console.log("componentWIll recipe",  nextProps.recipe.newRecipe);
+        this.setState({
+            newRecipe: nextProps.recipe.newRecipe
+        })
+    }
     editRecipeHandler(event){
+       
+        console.log(event);
         const modal = document.querySelector(".modal");
+       
         if (this.state.isEditClicked){
            
             const index = event.target.getAttribute("data-key");
            
             this.setState((prevState, props) => {
                 const edit =  props.recipe.recipes[index];
-                console.log(edit.recipe_ingredients, "here");
+                // console.log(edit.recipe_ingredients, "here");
                 const inputArr = ["title", "image", "description", "serves", "time", "drink"];
                 inputArr.forEach(val => document.querySelector(`#edit-${val}-val`).value = edit[`recipe_${val}`]);
-
+                console.log("inside editRecipe, recipe.js", index);
                 return {
                     editRecipe: {
                         recipe_title : edit.recipe_title,
@@ -52,12 +62,17 @@ class Recipe extends Component {
                         recipe_time: edit.recipe_time,
                         recipe_drink: edit.recipe_drink
                     },
-                    currentIndex: index
+                    currentIndex: index,
+                    newRecipe: false
                 }
             });
 
+
         }
+        console.log("outside editRecipe, recipe.js")
+        this.props.isNewRecipeClicked();
         modal.classList.toggle("show");
+       
         this.setState(prevState => ({ isEditClicked: !prevState.isEditClicked }));
     }
     updateEditRecipeHandler(event){
@@ -73,8 +88,16 @@ class Recipe extends Component {
                     recipe_time: document.querySelector("#edit-time-val").value,
                     recipe_drink: document.querySelector("#edit-drink-val").value
                 },
-                currentIndex: this.state.currentIndex
-            })
+                currentIndex: this.state.currentIndex,
+                newRecipe: this.state.newRecipe
+            });
+
+            // if (this.state.newRecipe){
+            //     this.setState(prevState => {
+            //         const newState = JSON.parse(JSON.stringify(prevState));
+
+            //     });
+            // }
             modal.classList.toggle("show");
 
     }
@@ -111,6 +134,8 @@ class Recipe extends Component {
         });
     }
     render(){
+        console.log(this.state, "state recipe");
+        
         const recipe = this.props.recipe.recipes.map((val, i, arr) => {
             // console.log(val.instructions);
             return (

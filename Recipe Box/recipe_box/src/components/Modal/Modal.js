@@ -7,8 +7,42 @@ class Modal extends Component {
         this.state = {
             currentIndex: null,
             sectionName: null,
-            isEditClicked: true
+            isEditClicked: true,
+            newRecipe: false
         }
+        console.log(this.props);
+    }
+    componentWillReceiveProps(nextProps){
+        console.log("componenetWill", this.state, nextProps);
+        if (nextProps.editRecipe.newRecipe){
+            const inputArr = ["title", "image", "description", "serves", "time", "drink"];
+            inputArr.forEach(val => document.querySelector(`#edit-${val}-val`).value = "");
+            
+            this.setState({
+                newRecipe: nextProps.editRecipe.newRecipe,
+                currentIndex: null
+            })
+        }
+        else {
+            this.setState({
+                newRecipe: nextProps.editRecipe.newRecipe
+            });
+        }
+            
+    }
+    editRecipeHandler(e){
+        
+        console.log(this.state, "hererererre");
+        if (!this.state.newRecipe){
+            this.props.editRecipeHandler();
+        }
+        else {
+            const modal = document.querySelector(".modal");
+            modal.classList.toggle("show");
+        }
+        this.setState(prevState => {
+            newRecipe: false
+        });
     }
     addItem(e){
       
@@ -27,7 +61,8 @@ class Modal extends Component {
 
     }
     editItem(e){
-        if (this.state.isEditClicked){
+        // if (this.state.isEditClicked){
+            console.log(e.target.parentNode, "e.target");
             document.querySelector("#edit-items").value = e.target.parentNode.textContent;
     
             const sectionName = e.target.parentNode.parentNode.parentNode.children[0].textContent.toLowerCase();
@@ -41,7 +76,7 @@ class Modal extends Component {
                     isEditClicked: !prevState.isEditClicked
                 }
             });
-        }
+        // }
         document.querySelector(".modal-edit-item").classList.toggle("modal-edit-item-show");
         
     }
@@ -64,26 +99,32 @@ class Modal extends Component {
         });
     }
     render(){
-        console.log(this.props.editRecipe);
-        // const ingredients;
-        const ingredients = this.props.editRecipe.editRecipe.recipe_ingredients.map((ingredient, i) => (
-            <div className = "ingredient" key = {i}>
-                {ingredient}
-                <i className="fas fa-pencil-alt" onClick = {(e) => this.editItem(e)} data-key = {i}></i>
-                <i className="far fa-trash-alt" onClick = {(e) => this.deleteItem(e)} data-key = {i}></i>
-            </div>
-        ));
-        const instructions = this.props.editRecipe.editRecipe.recipe_instructions.map((instruction, i) => (
-            <div className = "instruction" key = {i}>
-                {instruction}
-                <i className="fas fa-pencil-alt" onClick = {(e) => this.editItem(e)} data-key = {i}></i>
-                <i className="far fa-trash-alt" onClick = {(e) => this.deleteItem(e)} data-key = {i}></i>
-            </div>
-        ));
+        console.log(this.state);
+
+
+        //Checking if newRecipie is false, then render ing and ins
+        let ingredients, instructions;
+        if (!this.state.newRecipe){
+            ingredients = this.props.editRecipe.editRecipe.recipe_ingredients.map((ingredient, i) => (
+                <div className = "ingredient" key = {i}>
+                    {ingredient}
+                    <i className="fas fa-pencil-alt" onClick = {(e) => this.editItem(e)} data-key = {i}></i>
+                    <i className="far fa-trash-alt" onClick = {(e) => this.deleteItem(e)} data-key = {i}></i>
+                </div>
+            ));
+            instructions = this.props.editRecipe.editRecipe.recipe_instructions.map((instruction, i) => (
+                <div className = "instruction" key = {i}>
+                    {instruction}
+                    <i className="fas fa-pencil-alt" onClick = {(e) => this.editItem(e)} data-key = {i}></i>
+                    <i className="far fa-trash-alt" onClick = {(e) => this.deleteItem(e)} data-key = {i}></i>
+                </div>
+            ));
+        }
+        
         return (
             <div className = "modal" >
                 <h2> This is Modal </h2>
-                <span className="close" onClick = {this.props.editRecipeHandler}>&times;</span>
+                <span className="close" onClick = {(e) => this.editRecipeHandler(e)}>&times;</span>
                 <div className = "modal-content">
                     <div className = "edit edit-details">
                         <h3>Details</h3>
@@ -146,7 +187,7 @@ class Modal extends Component {
                     <div className = "edit-item">
                         <h1> This is test </h1>
                         <input id = "edit-items"/>
-                        <div class = "edit-item-buttons">
+                        <div className = "edit-item-buttons">
                             <button onClick = {(e) => this.saveItem(e)}>Save</button>
                             <button onClick = {(e) => this.editItem(e)}>Cancel</button>
                         </div>
@@ -156,4 +197,4 @@ class Modal extends Component {
         )
     }
 }
-export default Modal
+export default Modal;

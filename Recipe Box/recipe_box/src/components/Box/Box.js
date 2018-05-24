@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import  Recipe from '../Recipe/Recipe'; 
+import Modal from '../Modal/Modal';
 import './Box.css';
 
 //Template recipes
@@ -42,8 +43,63 @@ const localRecipes = {
             recipe_serves : "number",
             recipe_time: "time",
             recipe_drink: "some drink"
+        },
+        {
+            recipe_title : "Chicken tikka masalalalalal",
+            recipe_image : "url",
+            recipe_description : "description here",
+            recipe_ingredients: [
+                "1 tblsp lol",
+                "2 tbls kms"
+            ],
+            recipe_instructions: 
+                [
+                    "add something", 
+                    "add something again", 
+                    "ok great!"
+                ],
+            recipe_serves : "number",
+            recipe_time: "time",
+            recipe_drink: "some drink"
+        },
+        {
+            recipe_title : "Chicken tikka masalalalalal",
+            recipe_image : "url",
+            recipe_description : "description here",
+            recipe_ingredients: [
+                "1 tblsp lol",
+                "2 tbls kms"
+            ],
+            recipe_instructions: 
+                [
+                    "add something", 
+                    "add something again", 
+                    "ok great!"
+                ],
+            recipe_serves : "number",
+            recipe_time: "time",
+            recipe_drink: "some drink"
+        },
+        {
+            recipe_title : "Chicken tikka masalalalalal",
+            recipe_image : "url",
+            recipe_description : "description here",
+            recipe_ingredients: [
+                "1 tblsp lol",
+                "2 tbls kms"
+            ],
+            recipe_instructions: 
+                [
+                    "add something", 
+                    "add something again", 
+                    "ok great!"
+                ],
+            recipe_serves : "number",
+            recipe_time: "time",
+            recipe_drink: "some drink"
         }
-    ]
+    ],
+    newRecipe: false
 }
 
 //localstorage/cookie stuff
@@ -73,6 +129,27 @@ class Box extends Component{
         })
         // console.log(this.state);
     }
+    newRecipeHandler(e){
+        const modal = document.querySelector(".modal");
+        this.setState(prevState => {
+            const newState = JSON.parse(JSON.stringify(prevState));
+            newState.newRecipe = true;
+            return newState;
+        })
+        console.log(this.state, "state");
+        modal.classList.toggle("show");
+    }
+    isNewRecipeClicked(e){
+        this.setState(prevState => {
+            const newState = JSON.parse(JSON.stringify(prevState));
+            newState.newRecipe = false;
+            return newState;
+        });
+        console.log("newRecipeClicked");
+    }
+    newRecipeToState(e){
+        
+    }
 
     render(){
         return (
@@ -84,8 +161,13 @@ class Box extends Component{
                     recipe = {this.state}
                     deleteRecipe = {(event) => this.recipeDeleteHandler(event)}
                     updateRecipe = {(event) => this.updateRecipeHandler(event)}
+                    isNewRecipeClicked = {(event) => this.isNewRecipeClicked(event)}
                     // addItem = {(event) => this.addItem(event)}
                 />
+                <div className = "new-recipe">
+                    <button onClick = {(e) => this.newRecipeHandler(e)}>This is test</button>
+                   
+                </div>
             </main>
         );
     }

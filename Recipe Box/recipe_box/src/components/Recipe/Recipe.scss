@@ -4,24 +4,6 @@
     .recipe {
         flex: 1 1 50%;
     }
-    .modal {
-        z-index: 10000;
-        display: none;
-        .modal-content {
-            display: flex;
-            .edit {
-                flex: 1 1 33%;
-                text-align: center;
-            }
-        }
-    }
-    .show {
-        display: block;
-        height: 100vh;
-        width: 100vw;
-        background-color: rgba($color: #ffffff, $alpha: 0.9);
-        position: absolute;
-        top: 0;
-    }
+    
 
 }
