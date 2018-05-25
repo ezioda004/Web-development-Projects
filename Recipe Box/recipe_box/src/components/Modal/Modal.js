@@ -31,18 +31,14 @@ class Modal extends Component {
             
     }
     editRecipeHandler(e){
-        
         console.log(this.state, "hererererre");
         if (!this.state.newRecipe){
-            this.props.editRecipeHandler();
+            this.props.editRecipeHandler(e);
         }
         else {
             const modal = document.querySelector(".modal");
             modal.classList.toggle("show");
         }
-        this.setState(prevState => {
-            newRecipe: false
-        });
     }
     addItem(e){
       
@@ -107,14 +103,14 @@ class Modal extends Component {
         if (!this.state.newRecipe){
             ingredients = this.props.editRecipe.editRecipe.recipe_ingredients.map((ingredient, i) => (
                 <div className = "ingredient" key = {i}>
-                    {ingredient}
+                    <span>{ingredient}</span>
                     <i className="fas fa-pencil-alt" onClick = {(e) => this.editItem(e)} data-key = {i}></i>
                     <i className="far fa-trash-alt" onClick = {(e) => this.deleteItem(e)} data-key = {i}></i>
                 </div>
             ));
             instructions = this.props.editRecipe.editRecipe.recipe_instructions.map((instruction, i) => (
                 <div className = "instruction" key = {i}>
-                    {instruction}
+                    <span>{instruction} </span>
                     <i className="fas fa-pencil-alt" onClick = {(e) => this.editItem(e)} data-key = {i}></i>
                     <i className="far fa-trash-alt" onClick = {(e) => this.deleteItem(e)} data-key = {i}></i>
                 </div>
@@ -123,13 +119,18 @@ class Modal extends Component {
         
         return (
             <div className = "modal" >
-                <h2> This is Modal </h2>
-                <span className="close" onClick = {(e) => this.editRecipeHandler(e)}>&times;</span>
+                <h2>Add/Edit your recipes!</h2>
+                <div className = "modal-buttons">
+                    <button className = "btn modal-save" onClick = {this.props.updateEditRecipeHandler}>Save</button>
+                    <button className = "btn modal-clear">Clear All</button>
+                    <button className = "close btn" onClick = {(e) => this.editRecipeHandler(e)}>&times;</button>
+                   
+                </div>
                 <div className = "modal-content">
                     <div className = "edit edit-details">
                         <h3>Details</h3>
                         <div className = "edit-edit-title">
-                            <label>
+                            <label> 
                                 <span>Title:</span>
                                 <input className = "val" id = "edit-title-val"/>
                             </label>
@@ -182,7 +183,7 @@ class Modal extends Component {
                         </div>
                     </div> 
                 </div>
-                <button onClick = {this.props.updateEditRecipeHandler}>save </button>
+                
                 <div className = "modal-edit-item">
                     <div className = "edit-item">
                         <h1> This is test </h1>

@@ -31,23 +31,16 @@ class Recipe extends Component {
         this.editRecipeHandler = this.editRecipeHandler.bind(this);
     }
     componentWillReceiveProps(nextProps){
-        console.log("componentWIll recipe",  nextProps.recipe.newRecipe);
         this.setState({
             newRecipe: nextProps.recipe.newRecipe
         })
     }
     editRecipeHandler(event){
-       
-        console.log(event);
         const modal = document.querySelector(".modal");
-       
-        if (this.state.isEditClicked){
-           
-            const index = event.target.getAttribute("data-key");
-           
+        if (this.state.isEditClicked && event.target.getAttribute("data-key") !== null){
+            const index = event.target.getAttribute("data-key");        
             this.setState((prevState, props) => {
                 const edit =  props.recipe.recipes[index];
-                // console.log(edit.recipe_ingredients, "here");
                 const inputArr = ["title", "image", "description", "serves", "time", "drink"];
                 inputArr.forEach(val => document.querySelector(`#edit-${val}-val`).value = edit[`recipe_${val}`]);
                 console.log("inside editRecipe, recipe.js", index);
@@ -70,7 +63,6 @@ class Recipe extends Component {
 
         }
         console.log("outside editRecipe, recipe.js")
-        this.props.isNewRecipeClicked();
         modal.classList.toggle("show");
        
         this.setState(prevState => ({ isEditClicked: !prevState.isEditClicked }));
@@ -141,45 +133,53 @@ class Recipe extends Component {
             return (
                 <div className = "recipe" key = {i}>
                     <div className = "recipe-title">
-                        {val.recipe_title}
+                        <h3>
+                            {val.recipe_title}
+                        </h3>
                     </div>
                     <div className = "recipe-image">
-                        {val.recipe_image}
+                        <img className = "thumbnail" src = {val.recipe_image}/>
                     </div>
                     <div className = "recipe-description">
-                        {val.recipe_description}
+                        <p>
+                            {val.recipe_description}
+                        </p>
                     </div>
                     <div className = "recipe-ingredients">
                         <details open>
-                            <summary>ingredients</summary>
-                            <ol>
+                            <summary><strong>Ingredients</strong></summary>
+                            <ul>
                                 {val.recipe_ingredients.map((ing, j) => <li key = {j}>{ing}</li>)}
-                            </ol>
+                            </ul>
                         </details>
                     </div>
                     <div className = "recipe-instructions">
                         <details open>
-                            <summary>Overview</summary>
+                            <summary><strong>Instructions</strong></summary>
                             <ol>
                                 {val.recipe_instructions.map((ins, j) => <li key = {j}>{ins}</li>)}
                             </ol>
                         </details>
                     </div>
                     <div className = "recipe-serves">
-                        {val.serves}
+                        <p><strong>Serves:</strong> {val.recipe_serves}</p>
+                       
                     </div>
                     <div className = "recipe-time">
-                        {val.time}
+                        <p><strong>Time to cook:</strong> {val.recipe_time}</p>
                     </div>
                     <div className = "recipe-drink">
-                        {val.drink}
+                        <p><strong>Drink:</strong> {val.recipe_drink}</p>
                     </div>
-                    <button className = "edit" onClick = {this.editRecipeHandler} data-key = {i}>
-                        Edit
-                    </button>
-                    <button className = "delete" onClick = {this.props.deleteRecipe} data-key = {i}>
-                        Delete
-                    </button>
+                    <div className = "recipe-button">
+                        <button className = "btn edit" onClick = {this.editRecipeHandler} data-key = {i}>
+                            Edit
+                        </button>
+                        <button className = "btn delete" onClick = {this.props.deleteRecipe} data-key = {i}>
+                            Delete
+                        </button>
+                    </div>
+                    
                 </div>
             );
         });

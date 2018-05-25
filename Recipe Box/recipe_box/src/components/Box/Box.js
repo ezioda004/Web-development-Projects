@@ -10,8 +10,8 @@ const localRecipes = {
     [   
         {
             recipe_title : "Mexican chicken burger",
-            recipe_image : "url",
-            recipe_description : "description here",
+            recipe_image : "https://images.pexels.com/photos/161519/abstract-barbecue-barbeque-bbq-161519.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+            recipe_description : "Ready in under 20 minutes, this burger with spiced chipotle chicken breast, in toasted brioche with guacamole, makes for a satisfying weeknight treat for one.",
             recipe_ingredients: [
                 "1 tblsp lol",
                 "2 tbls kms"
@@ -22,9 +22,9 @@ const localRecipes = {
                     "add something again", 
                     "ok great!"
                 ],
-            recipe_serves : "number",
-            recipe_time: "time",
-            recipe_drink: "some drink"
+            recipe_serves : "2",
+            recipe_time: "40 mins",
+            recipe_drink: "Corona Light"
         },
         {
             recipe_title : "Chicken tikka masalalalalal",
@@ -114,21 +114,36 @@ class Box extends Component{
 
         this.state = localRecipes;
     }
+
+    // Deletes the recipe 
     recipeDeleteHandler(e){
         const index = e.target.getAttribute("data-key");
         this.setState(prevState => {
-            const newState = {...prevState};
+            const newState = JSON.parse(JSON.stringify(prevState));
             newState.recipes.splice(index, 1);
             return newState;
         });
     }
+
+    //Updates the recipe if the user clicks Save, data coming from Modal => Recipe => Box, stroed in 'e'
     updateRecipeHandler(e){
         this.setState(prevState => {
-            const newState = {...prevState};
-            return newState.recipes[e.currentIndex] = e.editRecipe
-        })
-        // console.log(this.state);
+            //Checking if its a new recipe, if so add it to the state
+            console.log(e.newRecipe);
+            if (e.newRecipe){
+                const newState = JSON.parse(JSON.stringify(prevState));
+                newState.recipes.push(e.editRecipe);
+                return newState;
+            }
+            //Otherwise update the recipe
+            else {
+                const newState = {...prevState};
+                return newState.recipes[e.currentIndex] = e.editRecipe
+            }
+        });
     }
+
+    //When the new recipe button is clicked, opens modal and changes newRecipe in state
     newRecipeHandler(e){
         const modal = document.querySelector(".modal");
         this.setState(prevState => {
@@ -136,21 +151,8 @@ class Box extends Component{
             newState.newRecipe = true;
             return newState;
         })
-        console.log(this.state, "state");
         modal.classList.toggle("show");
     }
-    isNewRecipeClicked(e){
-        this.setState(prevState => {
-            const newState = JSON.parse(JSON.stringify(prevState));
-            newState.newRecipe = false;
-            return newState;
-        });
-        console.log("newRecipeClicked");
-    }
-    newRecipeToState(e){
-        
-    }
-
     render(){
         return (
             <main id = "box"> 
@@ -161,8 +163,6 @@ class Box extends Component{
                     recipe = {this.state}
                     deleteRecipe = {(event) => this.recipeDeleteHandler(event)}
                     updateRecipe = {(event) => this.updateRecipeHandler(event)}
-                    isNewRecipeClicked = {(event) => this.isNewRecipeClicked(event)}
-                    // addItem = {(event) => this.addItem(event)}
                 />
                 <div className = "new-recipe">
                     <button onClick = {(e) => this.newRecipeHandler(e)}>This is test</button>

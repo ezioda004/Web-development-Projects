@@ -1,9 +1,41 @@
 #recipes {
   display: flex;
   flex-flow: row wrap;
+  justify-content: space-around;
+  font-family: 'Josefin Sans';
+  font-weight: 300;
+  font-size: 20px;
 }
 
 #recipes .recipe {
-  flex: 1 1 50%;
+  flex: 0 1 40%;
+}
+
+#recipes .recipe .recipe-title h3 {
+  text-align: center;
+}
+
+#recipes .recipe .recipe-image .thumbnail {
+  width: 100%;
+}
+
+#recipes .recipe .recipe-description {
+  font-style: italic;
+}
+
+#recipes .recipe .recipe-button .edit {
+  background: #93C461;
+}
+
+#recipes .recipe .recipe-button .delete {
+  background: #C33F3F;
+}
+
+.btn {
+  width: 100px;
+  height: 35px;
+  color: white;
+  border-radius: 12px;
+  cursor: pointer;
 }
 /*# sourceMappingURL=Recipe.css.map */
