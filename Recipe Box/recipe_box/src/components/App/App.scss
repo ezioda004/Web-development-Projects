@@ -1,8 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:300,400');
+@import url('https://fonts.googleapis.com/css?family=Lobster');
 html, body, #root, .App {
     height: 100%;
 }
 .App {
     display: flex;
     flex-flow: column nowrap;
+    i {
+        transition: all 0.5s;
+    }
+    i:hover {
+        color: black !important;
+        cursor: pointer;
+    }
 }

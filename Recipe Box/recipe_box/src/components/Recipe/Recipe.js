@@ -43,7 +43,6 @@ class Recipe extends Component {
                 const edit =  props.recipe.recipes[index];
                 const inputArr = ["title", "image", "description", "serves", "time", "drink"];
                 inputArr.forEach(val => document.querySelector(`#edit-${val}-val`).value = edit[`recipe_${val}`]);
-                console.log("inside editRecipe, recipe.js", index);
                 return {
                     editRecipe: {
                         recipe_title : edit.recipe_title,
@@ -62,7 +61,6 @@ class Recipe extends Component {
 
 
         }
-        console.log("outside editRecipe, recipe.js")
         modal.classList.toggle("show");
        
         this.setState(prevState => ({ isEditClicked: !prevState.isEditClicked }));
@@ -83,31 +81,18 @@ class Recipe extends Component {
                 currentIndex: this.state.currentIndex,
                 newRecipe: this.state.newRecipe
             });
-
-            // if (this.state.newRecipe){
-            //     this.setState(prevState => {
-            //         const newState = JSON.parse(JSON.stringify(prevState));
-
-            //     });
-            // }
             modal.classList.toggle("show");
 
     }
     addItem(e){
-        console.log(e, "here");
         const section = Object.keys(e);
-        console.log(e[section[1]], "wottt");
-       
         this.setState(prevState => {
             const newState = JSON.parse(JSON.stringify(prevState)); //to make a deep copy
-       
             newState.editRecipe[section[1]].push(e[section[1]]);
             return newState;
         });
     }
     saveItem(e){
-        console.log(e, "here");
-        
         this.setState(prevState => {
             const newState = JSON.parse(JSON.stringify(prevState));
             const keys = Object.keys(e);
@@ -125,11 +110,25 @@ class Recipe extends Component {
             return newState;
         });
     }
+    clearAllItems(e){
+        document.querySelectorAll(".val").forEach(val => val.value = "");
+        this.setState(prevState => {
+            return {
+                editRecipe: {
+                    recipe_title : "",
+                    recipe_image : "",
+                    recipe_description : "",
+                    recipe_ingredients: [],
+                    recipe_instructions: [],
+                    recipe_serves : "",
+                    recipe_time: "",
+                    recipe_drink: "" 
+                }
+            }
+        });
+    }
     render(){
-        console.log(this.state, "state recipe");
-        
         const recipe = this.props.recipe.recipes.map((val, i, arr) => {
-            // console.log(val.instructions);
             return (
                 <div className = "recipe" key = {i}>
                     <div className = "recipe-title">
@@ -154,7 +153,7 @@ class Recipe extends Component {
                         </details>
                     </div>
                     <div className = "recipe-instructions">
-                        <details open>
+                        <details close = "true">
                             <summary><strong>Instructions</strong></summary>
                             <ol>
                                 {val.recipe_instructions.map((ins, j) => <li key = {j}>{ins}</li>)}
@@ -194,6 +193,7 @@ class Recipe extends Component {
                     addItem = {(e) => this.addItem(e)}
                     saveItem = {(e) => this.saveItem(e)}
                     deleteItem = {(e) => this.deleteItem(e)}
+                    clearAllItems = {(e) => this.clearAllItems(e)}
                 />
             </section>
         );

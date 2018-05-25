@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans:300,400");
+@import url("https://fonts.googleapis.com/css?family=Lobster");
 html, body, #root, .App {
   height: 100%;
 }
@@ -6,5 +7,14 @@ html, body, #root, .App {
 .App {
   display: flex;
   flex-flow: column nowrap;
+}
+
+.App i {
+  transition: all 0.5s;
+}
+
+.App i:hover {
+  color: black !important;
+  cursor: pointer;
 }
 /*# sourceMappingURL=App.css.map */

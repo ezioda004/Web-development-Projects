@@ -1,6 +1,8 @@
 #box {
     flex: 1 1 100%;
     .desc {
+        position: relative;
+        top: 52px;
         background: url("https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=500&w=1000");
         background-repeat: no-repeat;
         background-attachment: fixed;
@@ -19,7 +21,7 @@
         content: '';
         position: absolute;
         background-image: linear-gradient(to bottom right,#413C35,#413C35);
-        top: 53px;
+        top: 0px;
         left: 0;
         right: 0;
         bottom: 0;
@@ -28,7 +30,19 @@
     }
     .new-recipe {
         position: fixed;
-        bottom: 0;
-        right: 0;
+        bottom: 30px;
+        right: 20px;
+        
+        button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #93C461;
+            border: 0;
+            cursor: pointer;
+            i {
+                color: white;
+            }
+        }
     }
 }

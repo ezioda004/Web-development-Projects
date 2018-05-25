@@ -10,10 +10,8 @@ class Modal extends Component {
             isEditClicked: true,
             newRecipe: false
         }
-        console.log(this.props);
     }
     componentWillReceiveProps(nextProps){
-        console.log("componenetWill", this.state, nextProps);
         if (nextProps.editRecipe.newRecipe){
             const inputArr = ["title", "image", "description", "serves", "time", "drink"];
             inputArr.forEach(val => document.querySelector(`#edit-${val}-val`).value = "");
@@ -21,17 +19,15 @@ class Modal extends Component {
             this.setState({
                 newRecipe: nextProps.editRecipe.newRecipe,
                 currentIndex: null
-            })
+            });
         }
         else {
             this.setState({
                 newRecipe: nextProps.editRecipe.newRecipe
             });
         }
-            
     }
     editRecipeHandler(e){
-        console.log(this.state, "hererererre");
         if (!this.state.newRecipe){
             this.props.editRecipeHandler(e);
         }
@@ -41,15 +37,10 @@ class Modal extends Component {
         }
     }
     addItem(e){
-      
         const sectionName = e.target.parentNode.children[0].textContent.toLowerCase();
-        console.log(sectionName, "section name")
         const item =  sectionName === "ingredients" 
                         ?  document.querySelector("#edit-ingredients-val").value
                         :  document.querySelector("#edit-instructions-val").value
-        // console.log(item);
-        console.log(this.props.editRecipe.currentIndex);
-        
         this.props.addItem({
             currentIndex: this.props.editRecipe.currentIndex,
             [`recipe_${sectionName}`]: item
@@ -57,14 +48,9 @@ class Modal extends Component {
 
     }
     editItem(e){
-        // if (this.state.isEditClicked){
-            console.log(e.target.parentNode, "e.target");
             document.querySelector("#edit-items").value = e.target.parentNode.textContent;
-    
             const sectionName = e.target.parentNode.parentNode.parentNode.children[0].textContent.toLowerCase();
-
             const index = e.target.getAttribute("data-key")
-            
             this.setState(prevState => {
                 return {
                     currentIndex: index,
@@ -72,9 +58,7 @@ class Modal extends Component {
                     isEditClicked: !prevState.isEditClicked
                 }
             });
-        // }
         document.querySelector(".modal-edit-item").classList.toggle("modal-edit-item-show");
-        
     }
     saveItem(e){
 
@@ -89,15 +73,11 @@ class Modal extends Component {
     deleteItem(e){
         const sectionName = e.target.parentNode.parentNode.parentNode.children[0].textContent.toLowerCase();
         const index = e.target.getAttribute("data-key"); 
-        // console.log("clicked", sectionName, index);
         this.props.deleteItem({
             [sectionName]: index
         });
     }
     render(){
-        console.log(this.state);
-
-
         //Checking if newRecipie is false, then render ing and ins
         let ingredients, instructions;
         if (!this.state.newRecipe){
@@ -110,7 +90,7 @@ class Modal extends Component {
             ));
             instructions = this.props.editRecipe.editRecipe.recipe_instructions.map((instruction, i) => (
                 <div className = "instruction" key = {i}>
-                    <span>{instruction} </span>
+                    <p>{instruction} </p>
                     <i className="fas fa-pencil-alt" onClick = {(e) => this.editItem(e)} data-key = {i}></i>
                     <i className="far fa-trash-alt" onClick = {(e) => this.deleteItem(e)} data-key = {i}></i>
                 </div>
@@ -122,8 +102,8 @@ class Modal extends Component {
                 <h2>Add/Edit your recipes!</h2>
                 <div className = "modal-buttons">
                     <button className = "btn modal-save" onClick = {this.props.updateEditRecipeHandler}>Save</button>
-                    <button className = "btn modal-clear">Clear All</button>
-                    <button className = "close btn" onClick = {(e) => this.editRecipeHandler(e)}>&times;</button>
+                    <button className = "btn modal-clear" onClick = {this.props.clearAllItems}>Clear All</button>
+                    <button className = "close btn" onClick = {(e) => this.editRecipeHandler(e)}>Close</button>
                    
                 </div>
                 <div className = "modal-content">
@@ -132,43 +112,43 @@ class Modal extends Component {
                         <div className = "edit-edit-title">
                             <label> 
                                 <span>Title:</span>
-                                <input className = "val" id = "edit-title-val"/>
+                                <input className = "val" id = "edit-title-val" placeholder = "Add/Edit Recipe Title"/>
                             </label>
                         </div>
                         <div className = "edit-edit-title">
                             <label>
                                 <span>Image URL:</span>
-                                <input className = "val"id = "edit-image-val"/>
+                                <input className = "val"id = "edit-image-val"  placeholder = "Add/Edit Image URL"/>
                             </label>
                         </div>
                         <div className = "edit-edit-title">
                             <label>
                                 <span>Description:</span>
-                                <input className = "val"id = "edit-description-val"/>
+                                <input className = "val"id = "edit-description-val"  placeholder = "Add/Edit Recipe Description"/>
                             </label>
                         </div>
                         <div className = "edit-edit-title">
                             <label>
                                 <span>Serves:</span>
-                                <input className = "val"id = "edit-serves-val"/>
+                                <input className = "val"id = "edit-serves-val"  placeholder = "Add/Edit Recipe Serves"/>
                             </label>
                         </div>
                         <div className = "edit-edit-title">
                             <label>
                                 <span>Cooking Time:</span>
-                                <input className = "val"id = "edit-time-val"/>
+                                <input className = "val"id = "edit-time-val"  placeholder = "Add/Edit Cooking Time"/>
                             </label>
                         </div>
                         <div className = "edit-edit-title">
                             <label>
                                 <span>Drink:</span>
-                                <input className = "val"id = "edit-drink-val"/>
+                                <input className = "val"id = "edit-drink-val"  placeholder = "Add/Edit Drink"/>
                             </label>
                         </div>
                     </div> 
                     <div className = "edit edit-ingredients">
                         <h3>Ingredients</h3>
-                        <input className = "val" id = "edit-ingredients-val" />
+                        <input className = "val" id = "edit-ingredients-val"  placeholder = "Add/Edit Ingredients"/>
                         <i onClick = {(e) => this.addItem(e)} className="fas fa-plus"></i>
                         <div className = "edit-ingredients">
                             {ingredients}
@@ -176,7 +156,7 @@ class Modal extends Component {
                     </div> 
                     <div className = "edit edit-instructions">
                         <h3>Instructions</h3>
-                        <input className = "val" id = "edit-instructions-val" />
+                        <input className = "val" id = "edit-instructions-val"  placeholder = "Add/Edit Instructions"/>
                         <i onClick = {(e) => this.addItem(e)} className="fas fa-plus"></i>
                         <div className = "edit-instructions">
                             {instructions}

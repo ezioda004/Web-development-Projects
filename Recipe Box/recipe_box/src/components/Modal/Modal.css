@@ -1,13 +1,25 @@
 .modal {
   z-index: 10000;
   display: none;
-  background-image: url("https://images.pexels.com/photos/349609/pexels-photo-349609.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  background-image: url("../../assets/pexels-photo-349609.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  overflow: auto;
+}
+
+.modal input {
+  box-shadow: 3px 3px 55px -5px rgba(0, 0, 0, 0.75);
+  font-family: 'Josefin Sans';
+  padding-left: 10px;
 }
 
 .modal h2 {
+  margin-top: 5%;
   text-align: center;
+}
+
+.modal h2, .modal h3 {
+  font-family: 'Lobster', cursive;
 }
 
 .modal .modal-buttons {
@@ -18,6 +30,7 @@
 
 .modal .modal-buttons .btn {
   margin: 8px;
+  border: 0;
 }
 
 .modal .modal-buttons .modal-save {
@@ -26,6 +39,10 @@
 
 .modal .modal-buttons .modal-clear {
   background: #C33F3F;
+}
+
+.modal .modal-buttons .close {
+  background: #223;
 }
 
 .modal .modal-content {
@@ -52,9 +69,11 @@
   flex: 0 1 30%;
   text-align: center;
   width: 30%;
+  margin: 10px;
 }
 
 .modal .modal-content .edit .edit-ingredients, .modal .modal-content .edit .edit-instructions {
+  font-weight: 400;
   margin: 20px;
 }
 
@@ -122,6 +141,15 @@
   flex: 1 0 60%;
   display: inline-block;
   overflow: auto;
+  margin: 5px 0;
+}
+
+.instruction p, .ingredient p {
+  flex: 1 0 60%;
+  overflow-wrap: break-word;
+  width: 40%;
+  margin: 0;
+  margin: 5px 0;
 }
 
 .instruction i, .ingredient i {
