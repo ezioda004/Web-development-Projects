@@ -70,3 +70,11 @@
 .btn:hover {
     background: #333 !important;
 }
+
+@media (max-width: 480px){
+    #recipes {
+        .recipe {
+            flex: 1 1 100%;
+        }
+    }
+}
