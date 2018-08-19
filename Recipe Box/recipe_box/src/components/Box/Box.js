@@ -117,11 +117,13 @@ const localRecipes = {
 }
 
 //localstorage/cookie stuff
-if (localStorage.length === 0){
-    localStorage.setItem("recipe", JSON.stringify(localRecipes));
-}
 
+if (!("recipe" in localStorage)){
+    localStorage.setItem("recipe", JSON.stringify(localRecipes));
+ 
+}
 const localStoredRecipes = JSON.parse(localStorage.recipe);
+
 
 //Box component, a SMART one
 class Box extends Component{
