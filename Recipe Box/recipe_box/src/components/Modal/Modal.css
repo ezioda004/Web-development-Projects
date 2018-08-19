@@ -8,7 +8,8 @@
 }
 
 .modal input {
-  box-shadow: 3px 3px 55px -5px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 3px 3px 55px -5px rgba(0, 0, 0, 0.75);
+          box-shadow: 3px 3px 55px -5px rgba(0, 0, 0, 0.75);
   font-family: 'Josefin Sans';
   padding-left: 10px;
 }
@@ -18,13 +19,18 @@
   text-align: center;
 }
 
-.modal h2, .modal h3 {
+.modal h2,
+.modal h3 {
   font-family: 'Lobster', cursive;
 }
 
 .modal .modal-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   margin: 2%;
 }
 
@@ -46,20 +52,32 @@
 }
 
 .modal .modal-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .modal .modal-content .edit-details label {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   font-weight: 400;
   margin: 2%;
 }
 
 .modal .modal-content .edit-details label input {
-  align-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
   border-radius: 10px;
   height: 25px;
   width: 50%;
@@ -68,13 +86,16 @@
 }
 
 .modal .modal-content .edit {
-  flex: 0 1 30%;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 30%;
+          flex: 0 1 30%;
   text-align: center;
   width: 30%;
   margin: 10px;
 }
 
-.modal .modal-content .edit .edit-ingredients, .modal .modal-content .edit .edit-instructions {
+.modal .modal-content .edit .edit-ingredients,
+.modal .modal-content .edit .edit-instructions {
   font-weight: 400;
   margin: 20px;
 }
@@ -98,15 +119,14 @@
 .modal .modal-edit-item {
   display: none;
   z-index: 10000;
-  position: absolute;
+  overflow-y: hidden;
+  position: fixed;
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#413C35), to(#413C35));
   background-image: linear-gradient(to bottom right, #413C35, #413C35);
   top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   opacity: .8;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
 }
 
 .modal .modal-edit-item .edit-item {
@@ -114,8 +134,26 @@
   margin: 15% auto;
 }
 
+.modal .modal-edit-item .edit-item #edit-items {
+  width: 50%;
+  height: 200px;
+  line-height: 30px;
+  font-size: 1em;
+  opacity: 1;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
 .modal .modal-edit-item .edit-item h1 {
   color: white;
+}
+
+.modal .modal-edit-item .edit-item .modal-save {
+  background: #93C461;
+}
+
+.modal .modal-edit-item .edit-item .modal-clear {
+  background: #C33F3F;
 }
 
 .modal .modal-edit-item-show {
@@ -133,28 +171,40 @@
   height: 100%;
 }
 
-.instruction, .ingredient {
+.instruction,
+.ingredient {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   text-align: center;
 }
 
-.instruction span, .ingredient span {
-  flex: 1 0 60%;
+.instruction span,
+.ingredient span {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 60%;
+          flex: 1 0 60%;
   display: inline-block;
   overflow: auto;
   margin: 5px 0;
 }
 
-.instruction p, .ingredient p {
-  flex: 1 0 60%;
+.instruction p,
+.ingredient p {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 60%;
+          flex: 1 0 60%;
   overflow-wrap: break-word;
   width: 40%;
   margin: 0;
   margin: 5px 0;
 }
 
-.instruction i, .ingredient i {
+.instruction i,
+.ingredient i {
   margin: 5px;
 }
 
@@ -166,7 +216,9 @@
 
 @media (max-width: 768px) {
   .modal .modal-content .edit {
-    flex: 1 1 100%;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 100%;
+            flex: 1 1 100%;
   }
 }
 /*# sourceMappingURL=Modal.css.map */

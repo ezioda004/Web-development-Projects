@@ -120,6 +120,7 @@ const localRecipes = {
 if (localStorage.length === 0){
     localStorage.setItem("recipe", JSON.stringify(localRecipes));
 }
+
 const localStoredRecipes = JSON.parse(localStorage.recipe);
 
 //Box component, a SMART one

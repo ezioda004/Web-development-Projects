@@ -6,16 +6,16 @@
     background-repeat: no-repeat;
     overflow: auto;
     input {
-        box-shadow: 3px 3px 55px -5px rgba(0,0,0,0.75);
+        box-shadow: 3px 3px 55px -5px rgba(0, 0, 0, 0.75);
         font-family: 'Josefin Sans';
         padding-left: 10px;
     }
-   
     h2 {
         margin-top: 5%;
         text-align: center;
     }
-    h2, h3 {
+    h2,
+    h3 {
         font-family: 'Lobster', cursive;
     }
     .modal-buttons {
@@ -42,12 +42,10 @@
         justify-content: space-around;
         .edit-details {
             label {
-
                 display: flex;
                 justify-content: space-between;
                 font-weight: 400;
                 margin: 2%;
-                
                 input {
                     align-self: center;
                     border-radius: 10px;
@@ -63,56 +61,64 @@
             text-align: center;
             width: 30%;
             margin: 10px;
-            
-            .edit-ingredients, .edit-instructions {
+            .edit-ingredients,
+            .edit-instructions {
                 font-weight: 400;
                 margin: 20px;
             }
-           .fas {
-               color: green;
-           }
-           .far {
-               color: #C33F3F;
-           }
-           input {
+            .fas {
+                color: green;
+            }
+            .far {
+                color: #C33F3F;
+            }
+            input {
                 border-radius: 10px;
                 height: 25px;
                 width: 70%;
                 font-size: 15px;
                 margin-right: 40px;
-           }
+            }
         }
-        
     }
-
     .modal-edit-item {
         display: none;
-    
         z-index: 10000;
-    
-        position: absolute;
-        background-image: linear-gradient(to bottom right,#413C35,#413C35);
+        overflow-y: hidden;
+        position: fixed;
+        background-image: linear-gradient(to bottom right, #413C35, #413C35);
         top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
         opacity: .8;
-        height: 100vh;
-        width: 100vw;
+        height: 100%;
+        width: 100%;
         .edit-item {
             text-align: center;
             margin: 15% auto;
+            #edit-items {
+                width: 50%;
+                height: 200px;
+                line-height: 30px;
+                font-size: 1em;
+                opacity: 1;
+                border-radius: 10px;
+                margin-bottom: 20px;
+            }
             h1 {
                 color: white;
             }
+            .modal-save {
+                background: #93C461;
+            }
+            .modal-clear {
+                background: #C33F3F;
+            }
         }
-     
     }
     .modal-edit-item-show {
-        display:block;
+        display: block;
     }
-    
 }
+
 .show {
     display: block;
     height: inherit;
@@ -123,7 +129,9 @@
     width: 100%;
     height: 100%;
 }
-.instruction, .ingredient {
+
+.instruction,
+.ingredient {
     display: flex;
     justify-content: flex-end;
     text-align: center;
@@ -145,18 +153,18 @@
     }
 }
 
-
-@media (max-width: 992px){
+@media (max-width: 992px) {
     .modal {
-         font-size: 13px !important;
+        font-size: 13px !important;
     }
 }
-@media (max-width: 768px){
+
+@media (max-width: 768px) {
     .modal {
         .modal-content {
             .edit {
                 flex: 1 1 100%;
-            } 
+            }
         }
     }
 }

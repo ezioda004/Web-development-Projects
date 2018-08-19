@@ -6,7 +6,7 @@ class Footer extends Component{
         return (
             <footer id  = "footer"> 
                 <span>
-                    Made by ezioda004
+                    Made by ezioda004 {"\uD83D\uDE00"}
                 </span>
             </footer>
         );

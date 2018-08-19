@@ -166,11 +166,11 @@ class Modal extends Component {
                 
                 <div className = "modal-edit-item">
                     <div className = "edit-item">
-                        <h1> This is test </h1>
-                        <input id = "edit-items"/>
+                        <h1> Edit Ingredients/Instructions here: </h1>
+                        <textarea id = "edit-items"/>
                         <div className = "edit-item-buttons">
-                            <button onClick = {(e) => this.saveItem(e)}>Save</button>
-                            <button onClick = {(e) => this.editItem(e)}>Cancel</button>
+                            <button className = "btn modal-save" onClick = {(e) => this.saveItem(e)}>Save</button>
+                            <button className = "btn modal-clear" onClick = {(e) => this.editItem(e)}>Cancel</button>
                         </div>
                     </div>
                 </div>
